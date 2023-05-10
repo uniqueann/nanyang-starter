@@ -1,5 +1,33 @@
 {
-	"pages": [{
+	"pages": [
+		{
+		    "path": "uni_modules/uni-cms-article/pages/list/list",
+		    "style": {
+		        "backgroundColor": "#FFFFFF",
+		        "enablePullDownRefresh": true,
+		        "navigationStyle": "custom"
+		    }
+		}
+		,{
+		    "path": "uni_modules/uni-cms-article/pages/search/search",
+		    "style": {
+		        "navigationBarTitleText": "搜索"
+		    }
+		}
+		,{
+		    "path": "uni_modules/uni-cms-article/pages/detail/detail",
+		    "style": {
+		        "navigationBarTitleText": "文章详情",
+		        "navigationStyle": "custom"
+		    }
+		}
+		,{
+		    "path": "uni_modules/uni-cms-article/pages/webview/webview",
+		    "style": {
+		        "navigationBarTitleText": ""
+		    }
+		}
+		,{
 			"path": "pages/list/list",
 			"style": {
 				// #ifndef APP-PLUS
@@ -104,7 +132,8 @@
 			}
 		}
 		// #endif
-	],
+
+],
 	"subPackages": [{
 			"root": "uni_modules/uni-feedback",
 			"pages": [{
@@ -224,7 +253,7 @@
 		"list": [{
 				"path": "pages/list/detail"
 			}, {
-				"path": "pages/list/list"
+				"path": "uni_modules/uni-cms-article/pages/list/list"
 			},
 			{
 				"path": "pages/ucenter/settings/settings"
@@ -238,7 +267,7 @@
 		"borderStyle": "black",
 		"backgroundColor": "#FFFFFF",
 		"list": [{
-			"pagePath": "pages/list/list",
+			"pagePath": "uni_modules/uni-cms-article/pages/list/list",
 			"iconPath": "static/tabbar/list.png",
 			"selectedIconPath": "static/tabbar/list_active.png",
 			"text": "列表"

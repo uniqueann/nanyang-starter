@@ -9,19 +9,16 @@
 			"title": "支付供应商",
 			"bsonType": "string",
 			"enum": [{
-					"text": "微信支付",
-					"value": "wxpay"
-				},
-				{
-					"text": "支付宝",
-					"value": "alipay"
-				},
-				{
-					"text": "苹果应用内支付",
-					"value": "appleiap"
-				}
-			],
-			"description": "支付供应商 如 wxpay alipay 参考 https://uniapp.dcloud.net.cn/api/plugins/provider.html#"
+				"text": "微信支付",
+				"value": "wxpay"
+			}, {
+				"text": "支付宝",
+				"value": "alipay"
+			}, {
+				"text": "苹果应用内支付",
+				"value": "appleiap"
+			}],
+			"description": "支付供应商 如 wxpay alipay 参考 https:\/\/uniapp.dcloud.net.cn\/api\/plugins\/provider.html#"
 		},
 		"provider_pay_type": {
 			"title": "支付方式",
@@ -39,26 +36,21 @@
 			"title": "订单状态",
 			"bsonType": "int",
 			"enum": [{
-					"text": "已关闭",
-					"value": -1
-				},
-				{
-					"text": "未支付",
-					"value": 0
-				},
-				{
-					"text": "已支付",
-					"value": 1
-				},
-				{
-					"text": "已部分退款",
-					"value": 2
-				},
-				{
-					"text": "已全额退款",
-					"value": 3
-				}
-			],
+				"text": "已关闭",
+				"value": -1
+			}, {
+				"text": "未支付",
+				"value": 0
+			}, {
+				"text": "已支付",
+				"value": 1
+			}, {
+				"text": "已部分退款",
+				"value": 2
+			}, {
+				"text": "已全额退款",
+				"value": 3
+			}],
 			"description": "订单状态 -1 已关闭 0：未支付 1：已支付 2：已部分退款 3：已全额退款",
 			"defaultValue": 0
 		},

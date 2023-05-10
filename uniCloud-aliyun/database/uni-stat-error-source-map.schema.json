@@ -13,8 +13,8 @@
 			"description": "ID，系统自动生成"
 		},
 		"appid": {
-		  "bsonType": "string",
-		  "description": "应用ID"
+			"bsonType": "string",
+			"description": "应用ID"
 		},
 		"uni_platform": {
 			"title": "应用平台",

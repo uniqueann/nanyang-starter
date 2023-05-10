@@ -1,0 +1,260 @@
+<template>
+  <view class="pages">
+    <view class="placeholder-bar">
+      <statusBar></statusBar>
+      <view :style="{ height: `${navBarHeight}px` }"></view>
+    </view>
+
+    <view class="nav-box">
+      <!-- #ifndef H5 -->
+      <statusBar></statusBar>
+      <!-- #endif -->
+      <view class="nav" :style="{ height: `${navBarHeight}px` }">
+        <!-- 搜索功能 -->
+        <view class="uni-search-box">
+          <uni-search-bar ref="searchBar" radius="100" cancelButton="none" disabled :placeholder="inputPlaceholder" />
+          <view class="cover-search-bar" @click="searchClick"></view>
+        </view>
+        <!-- #ifdef MP -->
+        <view class="mp-button-placeholder" :style="{ width: `${mpButtonPlaceholderSize}px` }"></view>
+        <!-- #endif -->
+      </view>
+    </view>
+
+    <unicloud-db ref='udb' v-slot:default="{ data, pagination, hasMore, loading, error, options }" @error="onqueryerror"
+      :collection="colList" :page-size="10" orderby="publish_date desc">
+      <!-- 基于 uni-list 的页面布局 field="user_id.nickname"-->
+      <uni-list class="uni-list" :border="false" :style="{ height: listHeight }">
+
+        <!-- 作用于app端nvue页面的下拉加载 -->
+        <!-- #ifdef APP-NVUE -->
+        <refresh-box @refresh="refresh" :loading="loading"></refresh-box>
+        <!-- #endif -->
+
+        <!-- 列表渲染 -->
+        <uni-list-item :to="'/uni_modules/uni-cms-article/pages/detail/detail?id=' + item._id"
+          v-for="(item, index) in data" :key="index">
+          <!-- 通过header插槽定义列表左侧图片 -->
+          <template v-slot:header>
+            <image class="thumbnail" :src="item.thumbnail" mode="aspectFill"></image>
+          </template>
+          <!-- 通过body插槽定义布局 -->
+          <template v-slot:body>
+            <view class="main">
+              <text class="title">{{ item.title }}</text>
+              <view class="info">
+                <text class="author">{{ item.user_id[0] ? item.user_id[0].nickname : '' }}</text>
+                <text class="publish_date">{{ publishTime(item.publish_date) }}</text>
+              </view>
+            </view>
+          </template>
+        </uni-list-item>
+        <!-- 加载状态：上拉加载更多，加载中，没有更多数据了，加载错误 -->
+        <!-- #ifdef APP-PLUS -->
+        <uni-list-item>
+          <template v-slot:body>
+            <!-- #endif -->
+            <uni-load-state @networkResume="refresh" :state="{ data, pagination, hasMore, loading, error }"
+              @loadMore="loadMore">
+            </uni-load-state>
+            <!-- #ifdef APP-PLUS -->
+          </template>
+        </uni-list-item>
+        <!-- #endif -->
+      </uni-list>
+    </unicloud-db>
+
+  </view>
+</template>
+
+<script>
+import statusBar from "@/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar";
+import translatePublishTime from "@/uni_modules/uni-cms-article/common/publish-time";
+
+const db = uniCloud.database();
+const articleDBName = 'uni-cms-articles'
+const userDBName = 'uni-id-users'
+
+export default {
+  components: {
+    statusBar
+  },
+  computed: {
+    // 根据当前语言返回不同的搜索框占位符
+    inputPlaceholder(e) {
+      if (uni.getStorageSync('CURRENT_LANG') == "en") {
+        return 'Please enter the search content' // 英文
+      } else {
+        return '请输入搜索内容' // 中文
+      }
+    },
+    // 连表查询，返回两个集合的查询结果
+    colList() {
+      return [
+        db.collection(articleDBName).where(this.where).field('thumbnail,title,publish_date,user_id').getTemp(), // 文章集合
+        db.collection(userDBName).field('_id,nickname').getTemp() // 用户集合
+      ]
+    }
+  },
+  data() {
+    return {
+      where: '"article_status" == 1', // 查询条件
+      showRefresh: false, // 是否显示刷新按钮
+      listHeight: 0, // 列表高度
+      mpButtonPlaceholderSize: 87, // 小程序导航栏按钮占位大小
+      navBarHeight: 44 // 导航栏高度
+    }
+  },
+  async onReady() {
+    // #ifdef MP
+    this.initNavBarSize() // 初始化导航栏大小
+    // #endif
+    // #ifdef APP-NVUE
+    /* 可用窗口高度 - 搜索框高 - 状态栏高 */
+    this.listHeight = uni.getSystemInfoSync().windowHeight - uni.getSystemInfoSync().statusBarHeight - this.navBarHeight + 'px'; // 计算列表高度
+    // #endif
+    // #ifndef APP-NVUE
+    this.listHeight = 'auto' // 列表高度自适应
+    // #endif
+  },
+  methods: {
+    // 初始化导航栏大小
+    initNavBarSize() {
+      // 获取小程序导航栏按钮信息
+      let menuButtonInfo = uni.getMenuButtonBoundingClientRect()
+      // 计算小程序导航栏按钮占位大小
+      this.mpButtonPlaceholderSize = menuButtonInfo.width + 10
+      // 获取系统信息，判断是否为 iOS 系统，设置导航栏高度
+      this.navBarHeight = uni.getSystemInfoSync().system.toLowerCase().includes('ios') ? 44 : 48
+
+    },
+    // 格式化时间戳
+    publishTime(timestamp) {
+      return translatePublishTime(timestamp)
+    },
+    // 点击搜索框
+    searchClick(e) {
+      uni.hideKeyboard();
+      uni.navigateTo({
+        url: '/uni_modules/uni-cms-article/pages/search/search'
+      });
+    },
+    // 重试
+    retry() {
+      this.refresh()
+    },
+    // 刷新
+    refresh() {
+      this.$refs.udb.loadData({
+        clear: true
+      }, () => {
+        uni.stopPullDownRefresh()
+        // #ifdef APP-NVUE
+        this.showRefresh = false
+        // #endif
+      })
+    },
+    // 加载更多
+    loadMore() {
+      this.$refs.udb.loadMore()
+    },
+    // 查询出错
+    onqueryerror(e) {
+      console.error(e);
+    }
+  },
+  // #ifndef APP-NVUE
+  // 下拉刷新
+  onPullDownRefresh() {
+    this.refresh()
+  },
+  // 上拉加载更多
+  onReachBottom() {
+    this.$refs.udb.loadMore()
+  }
+  // #endif
+}
+
+</script>
+
+<style scoped>
+/* #ifndef APP-NVUE */
+view {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+/* #endif */
+.pages {
+  background-color: #FFFFFF;
+}
+
+.thumbnail {
+  width: 240rpx;
+  height: 160rpx;
+  margin-right: 10rpx;
+}
+
+.main {
+  justify-content: space-between;
+  flex: 1;
+}
+
+.title {
+  font-size: 32rpx;
+}
+
+.info {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.author,
+.publish_date {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.nav-box {
+  background-color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /* #ifndef APP-PLUS */
+  z-index: 9;
+  /* #endif */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.uni-search-box {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.uni-search-box ::v-deep .uni-searchbar {
+  padding: 0;
+}
+
+.uni-search-box ::v-deep .uni-searchbar__box {
+  height: 32px;
+}
+
+.cover-search-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  /* #ifndef APP-NVUE */
+  z-index: 999;
+  /* #endif */
+}
+</style>

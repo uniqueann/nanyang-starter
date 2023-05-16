@@ -2,7 +2,7 @@
     "name" : "uni-starter",
     "appid" : "__UNI__CD5197E",
     "description" : "云端一体应用快速开发基本项目模版",
-    "versionName" : "",
+    "versionName" : "1.01.230510",
     "versionCode" : "100",
     "transformPx" : false,
     "app-plus" : {
@@ -67,5 +67,11 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3"
+    "vueVersion" : "3",
+    "h5" : {
+        "title" : "MALL",
+        "router" : {
+            "mode" : "history"
+        }
+    }
 }

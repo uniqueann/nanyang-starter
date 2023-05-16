@@ -10,3 +10,7 @@
 
 // 下面示例查询uni-id-users表的所有数据
 db.collection('uni-id-users').get();
+
+db.collection('opendb-search-hot').doc("645fec44f5cf3a2df4c67351").remove()
+
+db.collection('opendb-search-hot').get()

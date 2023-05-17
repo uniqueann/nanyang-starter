@@ -1,0 +1,127 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.paragraph.data-v-ca4bc759 {
+  word-break: break-all;
+}
+.paragraph > .image.data-v-ca4bc759 {
+  margin-bottom: 0;
+}
+.paragraph.image.data-v-ca4bc759 {
+  font-size: 0;
+}
+.paragraph.data-v-ca4bc759,
+.image.data-v-ca4bc759 {
+  margin-bottom: 40rpx;
+  line-height: 1.75;
+  font-size: 34rpx;
+}
+.texts .text.data-v-ca4bc759 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.header-1.data-v-ca4bc759,
+.header-2.data-v-ca4bc759,
+.header-3.data-v-ca4bc759,
+.header-4.data-v-ca4bc759,
+.header-5.data-v-ca4bc759,
+.header-6.data-v-ca4bc759 {
+  font-weight: bold;
+}
+.header-1.data-v-ca4bc759 {
+  font-size: 44rpx;
+}
+.header-2.data-v-ca4bc759 {
+  font-size: 40rpx;
+}
+.header-3.data-v-ca4bc759 {
+  font-size: 38rpx;
+}
+.header-4.data-v-ca4bc759 {
+  font-size: 32rpx;
+}
+.header-5.data-v-ca4bc759 {
+  font-size: 28rpx;
+}
+.header-6.data-v-ca4bc759 {
+  font-size: 24rpx;
+}
+.bold.data-v-ca4bc759 {
+  font-weight: bold;
+}
+.italic.data-v-ca4bc759 {
+  font-style: italic;
+}
+.strike.data-v-ca4bc759 {
+  text-decoration: line-through;
+}
+.underline.data-v-ca4bc759 {
+  text-decoration: underline;
+}
+.link.data-v-ca4bc759 {
+  color: #0064f9;
+  text-decoration: underline;
+}
+:not(.paragraph).image.data-v-ca4bc759 {
+  border-radius: 5px;
+  overflow: hidden;
+  display: inline-block;
+}
+:not(.paragraph).image .img.data-v-ca4bc759 {
+  width: 100%;
+  display: block;
+}
+.divider.data-v-ca4bc759 {
+  height: 1px;
+  background: #d8d8d8;
+  width: 100%;
+  margin: 40rpx 0;
+}
+.list.ordered .li .no.data-v-ca4bc759 {
+  margin-right: 10rpx;
+  -webkit-user-select: none;
+          user-select: none;
+}
+.list.bullet .li.data-v-ca4bc759 {
+  padding-left: 30rpx;
+  position: relative;
+}
+.list.bullet .li .no.data-v-ca4bc759 {
+  width: 10rpx;
+  height: 10rpx;
+  background: #222;
+  border-radius: 50%;
+  margin-right: 10rpx;
+  -webkit-user-select: none;
+          user-select: none;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 24rpx;
+}
+.list .li.data-v-ca4bc759 {
+  margin-bottom: 20rpx;
+}

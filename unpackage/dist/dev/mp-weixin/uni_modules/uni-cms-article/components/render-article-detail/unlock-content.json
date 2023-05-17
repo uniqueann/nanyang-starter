@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ad-rewarded-video": "../../../../node-modules/@dcloudio/uni-components/lib/ad-rewarded-video/ad-rewarded-video"
+  }
+}

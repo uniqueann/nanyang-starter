@@ -41,15 +41,19 @@
 			"properties": {
 				"all": {
 					"bsonType": "bool",
-					"description": "全部用户发送"
+					"description": "全部用户发送；字段废弃，由 condition 替代"
 				},
 				"type": {
 					"bsonType": "string",
-					"description": "to.all=true时用来区分发送类型, 可选值 user | userTags"
+					"description": "可选值 user | userTags"
 				},
 				"receiver": {
 					"bsonType": "array",
-					"description": "用户ID's \/ 用户标签ID's"
+					"description": "用户ID's \/ 用户标签ID's；指定id发送"
+				},
+				"condition": {
+					"bsonType": "object",
+					"description": "根据条件发送，例如给所有人发送"
 				}
 			}
 		},
@@ -72,5 +76,6 @@
 				"$env": "now"
 			}
 		}
-	}
+	},
+	"version": "0.0.1"
 }

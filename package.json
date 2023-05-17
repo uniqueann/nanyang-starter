@@ -1,8 +1,8 @@
 {
-	"id": "uni-starter",
-	"displayName": "uni-starter",
+	"id": "nanyang-starter",
+	"displayName": "nanyang-starter",
 	"version": "2.1.2",
-	"description": "云端一体应用快速开发基本项目模版",
+	"description": "nanyang",
 	"keywords": [
 		"login",
 		"登录",
@@ -10,7 +10,7 @@
 		"uni-id实例",
 		"留言板"
 	],
-	"repository": "https://gitcode.net/dcloud/uni-starter",
+	"repository": "",
 	"engines": {
 		"HBuilderX": "^3.2.6"
 	},

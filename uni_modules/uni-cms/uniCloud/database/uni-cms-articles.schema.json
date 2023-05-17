@@ -57,12 +57,10 @@
 			"enum": [{
 				"value": 0,
 				"text": "草稿箱"
-			},
-				{
-					"value": 1,
-					"text": "已发布"
-				}
-			]
+			}, {
+				"value": 1,
+				"text": "已发布"
+			}]
 		},
 		"view_count": {
 			"bsonType": "int",
@@ -102,12 +100,10 @@
 			"enum": [{
 				"value": 0,
 				"text": "关闭"
-			},
-				{
-					"value": 1,
-					"text": "开放"
-				}
-			]
+			}, {
+				"value": 1,
+				"text": "开放"
+			}]
 		},
 		"comment_count": {
 			"bsonType": "int",

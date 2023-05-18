@@ -261,4 +261,9 @@ view {
   z-index: 999;
   /* #endif */
 }
+
+.ad-view {
+	background-color: #FFFFFF;
+	margin-bottom: 10px;
+}
 </style>

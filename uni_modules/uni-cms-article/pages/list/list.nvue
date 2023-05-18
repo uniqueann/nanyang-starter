@@ -47,6 +47,9 @@
                 <text class="publish_date">{{ publishTime(item.publish_date) }}</text>
               </view>
             </view>
+			<view class="ad-view" v-if="(index > 0 && (index+1) % 1 == 0)">
+				<ad :adpid="adpid" @error="aderror"></ad>
+			</view>
           </template>
         </uni-list-item>
         <!-- 加载状态：上拉加载更多，加载中，没有更多数据了，加载错误 -->
@@ -98,6 +101,7 @@ export default {
   },
   data() {
     return {
+	  adpid: '',
       where: '"article_status" == 1', // 查询条件
       showRefresh: false, // 是否显示刷新按钮
       listHeight: 0, // 列表高度

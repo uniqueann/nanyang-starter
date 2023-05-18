@@ -165,7 +165,10 @@ export default {
     // 查询出错
     onqueryerror(e) {
       console.error(e);
-    }
+    },
+	aderror(e) {
+		console.log("aderror: " + JSON.stringify(e.detail));
+	}
   },
   // #ifndef APP-NVUE
   // 下拉刷新

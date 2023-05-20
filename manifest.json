@@ -1,7 +1,7 @@
 {
-    "name" : "uni-starter",
+    "name" : "AI资讯站",
     "appid" : "__UNI__CD5197E",
-    "description" : "云端一体应用快速开发基本项目模版",
+    "description" : "AI资讯站",
     "versionName" : "1.01.230510",
     "versionCode" : "100",
     "transformPx" : false,
@@ -46,14 +46,18 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx66bf57bc3e164dc3",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "postcss" : false,
+            "minified" : false,
+            "es6" : false
         },
         "usingComponents" : true,
         "optimization" : {
             "subPackages" : true
-        }
+        },
+        "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true

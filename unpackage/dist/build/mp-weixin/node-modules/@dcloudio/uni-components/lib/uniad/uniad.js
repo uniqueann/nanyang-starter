@@ -1,0 +1,1 @@
+"use strict";const n=require("../../../../../common/vendor.js"),o={name:"Uniad",mixins:[n.adMixin]};if(!Array){n.resolveComponent("uniad-plugin")()}const e=n._export_sfc(o,[["render",function(o,e,r,i,c,t){return{a:o.adpid,b:o.unitId,c:n.o(o._onmpload),d:n.o(o._onmpclose),e:n.o(o._onmperror),f:n.o(((...n)=>o.onclick&&o.onclick(...n)))}}]]);wx.createComponent(e);

@@ -1,0 +1,49 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "postcss": false,
+    "minified": false,
+    "newFeature": true,
+    "bigPackageSizeSupport": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "",
+  "appid": "wx66bf57bc3e164dc3",
+  "projectname": "AI资讯站",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "pathName": "pages/list/detail"
+        },
+        {
+          "id": 1,
+          "pathName": "uni_modules/uni-cms-article/pages/list/list"
+        },
+        {
+          "id": 2,
+          "pathName": "pages/ucenter/settings/settings"
+        }
+      ],
+      "current": 1
+    }
+  }
+}

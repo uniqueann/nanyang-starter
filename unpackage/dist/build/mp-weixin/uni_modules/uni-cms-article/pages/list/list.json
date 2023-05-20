@@ -1,0 +1,14 @@
+{
+  "backgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "status-bar": "../../../uni-nav-bar/components/uni-nav-bar/uni-status-bar",
+    "uni-search-bar": "../../../uni-search-bar/components/uni-search-bar/uni-search-bar",
+    "uniad": "../../../../node-modules/@dcloudio/uni-components/lib/uniad/uniad",
+    "uni-list-item": "../../../uni-list/components/uni-list-item/uni-list-item",
+    "uni-load-state": "../../../../components/uni-load-state/uni-load-state",
+    "uni-list": "../../../uni-list/components/uni-list/uni-list",
+    "unicloud-db": "../../../../node-modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db"
+  }
+}

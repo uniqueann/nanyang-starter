@@ -133,7 +133,16 @@
 		}
 		// #endif
 
-],
+    ,{
+            "path" : "pages/privacy-policy/privacy-policy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"subPackages": [{
 			"root": "uni_modules/uni-feedback",
 			"pages": [{

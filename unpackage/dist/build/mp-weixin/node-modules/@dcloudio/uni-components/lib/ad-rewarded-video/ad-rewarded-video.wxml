@@ -1,1 +1,1 @@
-<view bindtap="{{g}}"><slot name="d"/><uniad-plugin wx:if="{{r0}}" class="uniad-plugin" adpid="{{b}}" unit-id="{{c}}" bindload="{{d}}" bindclose="{{e}}" binderror="{{f}}" u-t="m" u-i="ba92f1de-0" bind:__l="__l"></uniad-plugin></view>
+<view bindtap="{{g}}"><slot name="d"/><uniad-plugin wx:if="{{r0}}" class="uniad-plugin" adpid="{{b}}" unit-id="{{c}}" bindload="{{d}}" bindclose="{{e}}" binderror="{{f}}" u-t="m" u-i="562fade6-0" bind:__l="__l"></uniad-plugin></view>

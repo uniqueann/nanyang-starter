@@ -1,4 +1,5 @@
 const {
+  db,
   dbCmd,
   userCollection
 } = require('../../common/constants')
@@ -84,8 +85,6 @@ function getUserQueryCondition (userRecord = {}) {
           username: username.toLowerCase()
         })
       }
-    } else if (key === 'identities') {
-      queryItem.identities = dbCmd.elemMatch(value)
     }
     condition.push(queryItem)
   }

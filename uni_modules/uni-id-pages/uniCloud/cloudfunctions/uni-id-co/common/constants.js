@@ -10,7 +10,6 @@ const openDataCollectionName = 'opendb-open-data'
 const openDataCollection = db.collection(openDataCollectionName)
 
 const USER_IDENTIFIER = {
-  _id: 'uid',
   username: 'username',
   mobile: 'mobile',
   email: 'email',
@@ -23,8 +22,7 @@ const USER_IDENTIFIER = {
   'qq_openid.app': 'qq-account',
   'qq_openid.mp': 'qq-account',
   ali_openid: 'alipay-account',
-  apple_openid: 'alipay-account',
-  identities: 'idp'
+  apple_openid: 'alipay-account'
 }
 
 const USER_STATUS = {
@@ -78,8 +76,6 @@ const EMAIL_SCENE = {
   BIND_EMAIL: 'bind-email'
 }
 
-const EXTERNAL_DIRECT_CONNECT_PROVIDER = 'externalDirectConnect'
-
 module.exports = {
   db,
   dbCmd,
@@ -92,6 +88,5 @@ module.exports = {
   CAPTCHA_SCENE,
   LOG_TYPE,
   SMS_SCENE,
-  EMAIL_SCENE,
-  EXTERNAL_DIRECT_CONNECT_PROVIDER
+  EMAIL_SCENE
 }

@@ -2,22 +2,16 @@ const crypto = require('crypto')
 const { ERROR } = require('../common/error')
 const needSignFunctions = new Set([
   'externalRegister',
-  'externalLogin',
-  'updateUserInfoByExternal'
+  'externalLogin'
 ])
 
 module.exports = function () {
   const methodName = this.getMethodName()
   const { source } = this.getUniversalClientInfo()
+  // 非 HTTP 方式请求不需要鉴权
+  if (source !== 'http') return
   // 指定接口需要鉴权
   if (!needSignFunctions.has(methodName)) return
-  
-  // 非 HTTP 方式请求不需要鉴权
-  if (source !== 'http') {
-    throw {
-      errCode: ERROR.ILLEGAL_REQUEST
-    }
-  }
 
   const timeout = 20 * 1000 // 请求超过20秒不能再请求，防止重放攻击
   const { headers, body: _body } = this.getHttpInfo()
